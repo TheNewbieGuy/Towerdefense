@@ -70,7 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerDefense.Defenders.SlowFieldDefender
   effectRadius: 3.58
   durationSeconds: 8
-  slowedMoveInterval: 0.25
+  slowedMoveInterval: 0.8
 --- !u!54 &-5555299122521683305
 Rigidbody:
   m_ObjectHideFlags: 0

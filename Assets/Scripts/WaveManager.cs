@@ -80,7 +80,7 @@ namespace TowerDefense.Waves
         [SerializeField] private float baseSpawnInterval = 1.5f;
         [SerializeField] private float minSpawnIntervalFloor = 0.1f;
 
-        [Header("Dynamic Difficulty Adjustment (DDA) Settings")]
+        [Header("DDA Settings")]
         [SerializeField] private bool enableDDA = true;
 
         [Space(5)]
@@ -93,7 +93,7 @@ namespace TowerDefense.Waves
         [SerializeField] private float recoveryThreshold = 0.6f;
         [Range(0f, 1f)][SerializeField] private float recoveryBudgetReductionRatio = 0.15f;
 
-        [Header("Performance Rating (P) Multipliers")]
+        [Header("Performance Rating Multipliers")]
         [SerializeField] private float coreHpWeight = 1.0f;
         [SerializeField] private float defenderSurvivalWeight = 0.5f;
         [SerializeField] private float goldBankWeight = 0.3f;
@@ -237,16 +237,14 @@ namespace TowerDefense.Waves
                 stdWeight = 30f; fastWeight = 30f; hunterWeight = 40f;
             }
 
-            // Dynamic check for currently alive resource generators
             int currentGeneratorsAlive = FindObjectsByType<ResourceGeneratorDefender>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).Length;
 
-            if (currentGeneratorsAlive >= 3)
+            if (currentGeneratorsAlive >= 7)
             {
                 hunterWeight += 15f;
                 Debug.Log($"[WaveManager] Resource Spike Trigger Active! ({currentGeneratorsAlive} Generators Alive -> +15% Hunter Weight)");
             }
 
-            // Apply Aggressive Surge Hunter Weight Bonus
             if (_isSurgeActive && _currentWave > 1)
             {
                 hunterWeight += surgeHunterWeightBonus;
